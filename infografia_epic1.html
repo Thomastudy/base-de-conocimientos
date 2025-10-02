@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle Épica 1: Planificación</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #f1f5f9; /* slate-100 */
+        }
+        .brand-blue { color: #0052CC; }
+        .bg-brand-blue { background-color: #0052CC; }
+        .border-brand-blue { border-color: #0052CC; }
+        .brand-teal { color: #00A3BF; }
+        .bg-brand-teal { background-color: #00A3BF; }
+        .border-brand-teal { border-color: #00A3BF; }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto px-4 py-12 md:py-20">
+        <!-- Encabezado -->
+        <header class="text-center mb-16">
+            <div class="inline-block bg-blue-100 text-brand-blue p-4 rounded-full mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                </svg>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-extrabold brand-blue">Épica 1: Planificación e Investigación</h1>
+            <p class="text-lg md:text-xl text-gray-600 mt-3 max-w-3xl mx-auto">Definiendo los cimientos del proyecto para asegurar el éxito y la alineación con las necesidades del equipo.</p>
+        </header>
+
+        <!-- Contenido de la Épica -->
+        <div class="max-w-4xl mx-auto space-y-12">
+            
+            <!-- 1.1: Definición de Requisitos -->
+            <div class="bg-white p-8 rounded-xl shadow-md border-l-4 border-brand-blue">
+                <h2 class="text-2xl font-bold brand-blue mb-4">1.1: Definición de Requisitos</h2>
+                <p class="text-gray-700 mb-6">
+                    Analizar requisitos para que la solución comprenda el entorno SAP y el lenguaje técnico ABAP, asegurando que las funcionalidades a automatizar sean las correctas.
+                </p>
+                <div class="bg-slate-50 p-4 rounded-lg mb-6">
+                    <h3 class="font-bold text-lg text-gray-700 mb-3">Hitos Clave:</h3>
+                    <ul class="list-disc list-inside space-y-2 text-gray-600">
+                        <li>Realizar entrevistas con 3-5 consultores de distintos niveles.</li>
+                        <li>Documentar los 5 casos de uso más frecuentes a resolver.</li>
+                        <li>Crear un glosario de términos técnicos (ABAP-BASIS) para el sistema.</li>
+                    </ul>
+                </div>
+                <!-- Tarjeta de Investigación -->
+                <div class="bg-teal-50 border-l-4 border-brand-teal p-5 rounded-lg flex items-start">
+                    <div class="flex-shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-brand-teal mr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg brand-teal mb-2">Pregunta Clave a Investigar</h4>
+                        <p class="text-teal-800">¿Cuáles son los criterios de aceptación para una "especificación técnica" generada automáticamente? ¿Qué nivel de detalle, formato y precisión se considera un éxito para que sea realmente útil?</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 1.2: Selección de Tecnología -->
+            <div class="bg-white p-8 rounded-xl shadow-md border-l-4 border-brand-blue">
+                <h2 class="text-2xl font-bold brand-blue mb-4">1.2: Selección de Tecnología</h2>
+                <p class="text-gray-700 mb-6">
+                    Definir la arquitectura técnica final, priorizando la integración con Microsoft (Teams, SharePoint) y OpenAI. La arquitectura se basará en un modelo RAG utilizando <strong>SAP HANA Cloud (Vector Engine)</strong> como base de datos vectorial.
+                </p>
+                <div class="bg-slate-50 p-4 rounded-lg mb-6">
+                    <h3 class="font-bold text-lg text-gray-700 mb-3">Hitos Clave:</h3>
+                    <ul class="list-disc list-inside space-y-2 text-gray-600">
+                        <li>Validar la viabilidad técnica del flujo SharePoint > SAP BTP > SAP HANA Cloud.</li>
+                        <li>Realizar una Prueba de Concepto (PoC) del proceso completo de ingesta y consulta.</li>
+                        <li>Definir el modelo de embedding a utilizar para la vectorización de documentos.</li>
+                    </ul>
+                </div>
+                 <!-- Tarjeta de Investigación -->
+                <div class="bg-teal-50 border-l-4 border-brand-teal p-5 rounded-lg mb-6 flex items-start">
+                    <div class="flex-shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-brand-teal mr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg brand-teal mb-2">Preguntas Claves a Investigar</h4>
+                        <p class="text-teal-800">1. ¿Cuáles son los costos estimados de las APIs (OpenAI, SAP BTP) y cómo se monitoreará el consumo?<br>2. ¿Cómo se gestionará la seguridad y los permisos para acceder a documentos con información sensible?</p>
+                    </div>
+                </div>
+                <div class="mt-6 text-right">
+                    <a href="infografia_rag.html" class="inline-block bg-brand-blue text-white font-semibold py-2 px-5 rounded-lg shadow-sm hover:bg-blue-700 transition-transform transform hover:scale-105">
+                        Ver Arquitectura RAG &rarr;
+                    </a>
+                </div>
+            </div>
+
+            <!-- 1.3: Centralización del Conocimiento -->
+            <div class="bg-white p-8 rounded-xl shadow-md border-l-4 border-brand-blue">
+                <h2 class="text-2xl font-bold brand-blue mb-4">1.3: Centralización del Conocimiento</h2>
+                <p class="text-gray-700 mb-6">
+                   Identificar y segmentar las áreas de conocimiento clave de la empresa para definir qué información alimentará el sistema, considerando tanto los servicios de consultoría como el software propio.
+                </p>
+                
+                <div class="bg-slate-50 p-4 rounded-lg mb-6">
+                    <h3 class="font-bold text-lg text-gray-700 mb-3">Áreas de Conocimiento ("Silos") Identificadas:</h3>
+                    <ol class="list-decimal list-inside space-y-2 text-gray-600">
+                        <li><strong>Desarrollo Técnico y Plataforma SAP:</strong> Conocimiento sobre ABAP-BASIS, tablas, transacciones y desarrollos.</li>
+                        <li><strong>Conocimiento Funcional (Servicios SAP):</strong> Experiencia de negocio en los distintos módulos de SAP.</li>
+                        <li><strong>Productos de Software Propios:</strong> Documentación, guías y conocimiento técnico de las soluciones de software de la empresa.</li>
+                        <li><strong>Gestión de Proyectos y Soluciones Implementadas:</strong> Repositorio de proyectos (servicios y software) para reutilización.</li>
+                        <li><strong>Base de Casos de Soporte:</strong> Solución a errores comunes e issues recurrentes (servicios y software).</li>
+                        <li><strong>Especificaciones Técnicas y de Requerimientos:</strong> Proceso de traducción de necesidades del cliente a lenguaje técnico.</li>
+                    </ol>
+                </div>
+
+                <!-- Tarjeta de Investigación -->
+                <div class="bg-teal-50 border-l-4 border-brand-teal p-5 rounded-lg mb-6 flex items-start">
+                    <div class="flex-shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-brand-teal mr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg brand-teal mb-2">Pregunta Clave a Investigar</h4>
+                        <p class="text-teal-800">¿Existen otros silos de conocimiento funcional relevantes además de los ya contemplados? Es necesario realizar un relevamiento para incluir áreas como Analytics o SAP Business One si corresponde.</p>
+                    </div>
+                </div>
+
+                <div class="bg-rose-50 border-l-4 border-rose-500 p-5 rounded-lg">
+                     <h3 class="font-bold text-lg text-rose-800 mb-3">Principales Cuellos de Botella a Resolver:</h3>
+                     <ul class="list-disc list-inside space-y-2 text-rose-700">
+                        <li><strong>Resolución de Problemas Repetitivos:</strong> Evitar "reinventar la rueda" con issues y desarrollos ya solucionados.</li>
+                        <li><strong>Creación de Especificaciones Técnicas:</strong> Estandarizar y agilizar el proceso para mejorar la comunicación entre equipos.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 1.4: Involucramiento de Expertos -->
+            <div class="bg-white p-8 rounded-xl shadow-md border-l-4 border-brand-blue">
+                <h2 class="text-2xl font-bold brand-blue mb-4">1.4: Involucramiento de Expertos</h2>
+                <p class="text-gray-700 mb-6">
+                    Colaborar activamente con consultores experimentados para guiar el desarrollo con su conocimiento y asegurar que la herramienta se adapte a las necesidades reales del equipo.
+                </p>
+                 <div class="bg-slate-50 p-4 rounded-lg mb-6">
+                    <h3 class="font-bold text-lg text-gray-700 mb-3">Hitos Clave:</h3>
+                    <ul class="list-disc list-inside space-y-2 text-gray-600">
+                        <li>Agendar sesiones de validación semanales con los expertos designados.</li>
+                        <li>Crear un canal de feedback directo (ej. en Teams) para consultas rápidas.</li>
+                        <li>Grabar sesiones de resolución de problemas para transcribir y añadir al conocimiento.</li>
+                    </ul>
+                </div>
+
+                <!-- Tarjeta de Investigación -->
+                <div class="bg-teal-50 border-l-4 border-brand-teal p-5 rounded-lg flex items-start">
+                    <div class="flex-shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-brand-teal mr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg brand-teal mb-2">Pregunta Clave a Investigar</h4>
+                        <p class="text-teal-800">¿Quiénes son los 2-3 consultores de referencia o "gurús" para cada uno de los silos de conocimiento definidos? Es crucial identificarlos para asegurar que el conocimiento extraído sea preciso, relevante y validado por expertos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botón para Volver -->
+        <div class="text-center mt-20">
+            <a href="index.html" class="inline-block bg-gray-700 text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:bg-gray-800 transition-transform transform hover:scale-105">
+                &larr; Volver a la Infografía Principal
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>
+

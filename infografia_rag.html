@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arquitectura RAG</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #f8fafc; /* Light gray background */
+        }
+        .brand-blue { color: #0052CC; }
+        .brand-teal { color: #00A3BF; }
+        .bg-brand-blue { background-color: #0052CC; }
+        .bg-brand-teal { background-color: #00A3BF; }
+
+        /* Custom styled scrollbar for slider */
+        .slider-container {
+            /* For Firefox */
+            scrollbar-width: thin;
+            scrollbar-color: #0052CC #e5e7eb; /* thumb color track color */
+        }
+        /* For Chrome, Safari and Opera */
+        .slider-container::-webkit-scrollbar {
+            height: 8px;
+        }
+        .slider-container::-webkit-scrollbar-track {
+            background: #e5e7eb; /* gray-200 */
+            border-radius: 10px;
+        }
+        .slider-container::-webkit-scrollbar-thumb {
+            background-color: #0052CC; /* brand-blue */
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto px-4 py-12 md:py-20">
+        <!-- Encabezado -->
+        <header class="text-center mb-16">
+             <div class="inline-block bg-blue-100 text-brand-blue p-4 rounded-full mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                </svg>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-extrabold brand-blue">Arquitectura RAG</h1>
+            <p class="text-lg md:text-xl text-gray-600 mt-3 max-w-3xl mx-auto">El motor inteligente que conecta nuestro conocimiento con respuestas precisas.</p>
+        </header>
+
+        <!-- ¿Qué es RAG? -->
+        <section class="max-w-4xl mx-auto mb-20 bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
+            <h2 class="text-3xl font-bold text-center brand-blue mb-4">¿Qué es y por qué lo usamos?</h2>
+            <div class="w-24 h-1 bg-brand-teal mx-auto mb-6"></div>
+            <p class="text-center text-gray-700 text-lg leading-relaxed">
+                RAG (Retrieval-Augmented Generation) es un método que conecta un modelo de lenguaje grande (como OpenAI) con una base de conocimiento externa y controlada (nuestros documentos en SharePoint). En lugar de que la IA "invente" respuestas, la obligamos a basarse únicamente en nuestra información interna. Esto nos permite obtener respuestas precisas, fiables y que citan sus fuentes, eliminando el riesgo de "alucinaciones" o datos incorrectos.
+            </p>
+        </section>
+
+        <!-- Proceso de Ingestión -->
+        <section class="mb-20">
+            <h2 class="text-3xl font-bold text-center brand-blue mb-12">El Proceso de Ingestión: ¿Cómo se Alimenta el Sistema?</h2>
+            <div class="slider-container flex snap-x snap-mandatory overflow-x-auto pt-4 pb-8 gap-6 md:gap-8 px-4 md:px-0">
+                <div class="snap-center shrink-0"><div class="w-4 md:w-0"></div></div>
+                <div class="snap-center shrink-0 w-4/5 sm:w-2/3 md:w-1/3">
+                    <div class="bg-white p-6 h-full rounded-lg shadow-md border-t-4 border-blue-400 text-center flex flex-col">
+                        <div class="text-4xl mb-4">📄</div>
+                        <h3 class="font-bold text-lg text-blue-800 mb-2">1. Carga de Documentos</h3>
+                        <p class="text-gray-600 text-sm">Un colaborador sube un nuevo documento (PDF, Word, etc.) a una carpeta designada en SharePoint.</p>
+                    </div>
+                </div>
+                <div class="snap-center shrink-0 w-4/5 sm:w-2/3 md:w-1/3">
+                    <div class="bg-white p-6 h-full rounded-lg shadow-md border-t-4 border-blue-400 text-center flex flex-col">
+                        <div class="text-4xl mb-4">⚙️</div>
+                        <h3 class="font-bold text-lg text-blue-800 mb-2">2. Extracción de Texto</h3>
+                        <p class="text-gray-600 text-sm">Un proceso automático detecta el nuevo archivo, extrae todo el texto y lo prepara para ser procesado.</p>
+                    </div>
+                </div>
+                <div class="snap-center shrink-0 w-4/5 sm:w-2/3 md:w-1/3">
+                    <div class="bg-white p-6 h-full rounded-lg shadow-md border-t-4 border-blue-400 text-center flex flex-col">
+                        <div class="text-4xl mb-4">✂️</div>
+                        <h3 class="font-bold text-lg text-blue-800 mb-2">3. Fragmentación (Chunking)</h3>
+                        <p class="text-gray-600 text-sm">El texto se divide en fragmentos más pequeños y manejables (chunks) para optimizar la búsqueda.</p>
+                    </div>
+                </div>
+                <div class="snap-center shrink-0 w-4/5 sm:w-2/3 md:w-1/3">
+                    <div class="bg-white p-6 h-full rounded-lg shadow-md border-t-4 border-blue-400 text-center flex flex-col">
+                        <div class="text-4xl mb-4">🔢</div>
+                        <h3 class="font-bold text-lg text-blue-800 mb-2">4. Vectorización</h3>
+                        <p class="text-gray-600 text-sm">Cada fragmento de texto se convierte en un vector numérico (embedding) que representa su significado semántico.</p>
+                    </div>
+                </div>
+                <div class="snap-center shrink-0 w-4/5 sm:w-2/3 md:w-1/3">
+                     <div class="bg-white p-6 h-full rounded-lg shadow-md border-t-4 border-teal-500 text-center flex flex-col">
+                        <div class="text-4xl mb-4">💾</div>
+                        <h3 class="font-bold text-lg text-teal-800 mb-2">5. Almacenamiento</h3>
+                        <p class="text-gray-600 text-sm">Los vectores se guardan y se indexan en SAP HANA Cloud, listos para ser consultados.</p>
+                    </div>
+                </div>
+                <div class="snap-center shrink-0"><div class="w-4 md:w-0"></div></div>
+            </div>
+        </section>
+
+        <!-- Proceso de Consulta -->
+        <section class="mb-20">
+            <h2 class="text-3xl font-bold text-center brand-blue mb-12">El Proceso de Consulta: ¿Cómo Responde el Sistema?</h2>
+            <div class="slider-container flex snap-x snap-mandatory overflow-x-auto pt-4 pb-8 gap-6 md:gap-8 px-4 md:px-0">
+                <div class="snap-center shrink-0"><div class="w-4 md:w-0"></div></div>
+                <div class="snap-center shrink-0 w-4/5 sm:w-2/3 md:w-1/3">
+                    <div class="bg-white p-6 h-full rounded-lg shadow-md border-t-4 border-brand-blue text-center flex flex-col">
+                        <div class="text-4xl mb-4">💬</div>
+                        <h3 class="font-bold text-lg brand-blue mb-2">1. Consulta del Usuario</h3>
+                        <p class="text-gray-600 text-sm">El consultor realiza una pregunta en lenguaje natural a través de la interfaz (ej. Microsoft Teams).</p>
+                    </div>
+                </div>
+                <div class="snap-center shrink-0 w-4/5 sm:w-2/3 md:w-1/3">
+                    <div class="bg-white p-6 h-full rounded-lg shadow-md border-t-4 border-brand-blue text-center flex flex-col">
+                        <div class="text-4xl mb-4">🔎</div>
+                        <h3 class="font-bold text-lg brand-blue mb-2">2. Búsqueda y Recuperación</h3>
+                        <p class="text-gray-600 text-sm">El sistema convierte la pregunta en un vector y busca los fragmentos de información más similares en la base de datos vectorial.</p>
+                    </div>
+                </div>
+                <div class="snap-center shrink-0 w-4/5 sm:w-2/3 md:w-1/3">
+                    <div class="bg-white p-6 h-full rounded-lg shadow-md border-t-4 border-brand-blue text-center flex flex-col">
+                        <div class="text-4xl mb-4">✨</div>
+                        <h3 class="font-bold text-lg brand-blue mb-2">3. Aumentación del Prompt</h3>
+                        <p class="text-gray-600 text-sm">La consulta original se enriquece con el contexto recuperado, creando un "prompt aumentado" mucho más informativo.</p>
+                    </div>
+                </div>
+                <div class="snap-center shrink-0 w-4/5 sm:w-2/3 md:w-1/3">
+                    <div class="bg-white p-6 h-full rounded-lg shadow-md border-t-4 border-brand-blue text-center flex flex-col">
+                        <div class="text-4xl mb-4">🤖</div>
+                        <h3 class="font-bold text-lg brand-blue mb-2">4. Generación con LLM</h3>
+                        <p class="text-gray-600 text-sm">Este prompt enriquecido se envía al modelo de lenguaje (OpenAI) para que genere una respuesta coherente y precisa.</p>
+                    </div>
+                </div>
+                <div class="snap-center shrink-0 w-4/5 sm:w-2/3 md:w-1/3">
+                     <div class="bg-white p-6 h-full rounded-lg shadow-md border-t-4 border-brand-teal text-center flex flex-col">
+                        <div class="text-4xl mb-4">✅</div>
+                        <h3 class="font-bold text-lg brand-teal mb-2">5. Respuesta Final</h3>
+                        <p class="text-gray-600 text-sm">Se entrega al usuario una respuesta contextualizada, basada en la documentación interna y citando las fuentes utilizadas.</p>
+                    </div>
+                </div>
+                <div class="snap-center shrink-0"><div class="w-4 md:w-0"></div></div>
+            </div>
+        </section>
+
+        <!-- Prueba de Concepto (PoC) con n8n -->
+        <section class="mb-20">
+            <h2 class="text-3xl font-bold text-center brand-blue mb-12">Prototipo Interactivo (PoC con n8n)</h2>
+            <div class="max-w-4xl mx-auto bg-white p-4 sm:p-6 rounded-2xl shadow-lg border border-gray-200">
+                <p class="text-center text-gray-600 mb-6">
+                    Este es un prototipo funcional básico creado en n8n para demostrar el flujo de consulta. Puedes interactuar directamente con él aquí mismo.
+                </p>
+                <div class="relative w-full h-[600px] rounded-lg overflow-hidden border border-gray-300 bg-gray-50 flex items-center justify-center">
+                    <!-- 
+                        IMPORTANTE: Reemplaza la URL de abajo con la URL para embeber tu workflow de n8n.
+                        La obtienes desde n8n en la vista de tu workflow, en la sección "Embed".
+                    -->
+                    <iframe
+                        src="https://invenzis.app.n8n.cloud/workflow/1zHpTalMFVZ0ekSj"
+                        class="absolute top-0 left-0 w-full h-full"
+                        frameborder="0">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- Componentes y Beneficios -->
+        <section class="bg-white p-10 rounded-2xl shadow-lg border border-gray-200">
+            <div class="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+                <!-- Componentes Clave -->
+                <div>
+                    <h2 class="text-3xl font-bold brand-blue mb-6">Componentes Clave</h2>
+                    <ul class="space-y-4">
+                        <li class="flex items-start"><div class="flex-shrink-0 bg-blue-100 text-brand-blue rounded-full h-8 w-8 flex items-center justify-center mr-4"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 12h6M7 8h6"></path></svg></div><span><strong>Fuentes de Conocimiento:</strong> SharePoint como punto de entrada para documentos, chats de Teams, etc.</span></li>
+                        <li class="flex items-start"><div class="flex-shrink-0 bg-blue-100 text-brand-blue rounded-full h-8 w-8 flex items-center justify-center mr-4"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg></div><span><strong>Proceso de Ingestión (ETL):</strong> Convierte documentos en "vectores" numéricos que la IA puede entender y buscar rápidamente.</span></li>
+                        <li class="flex items-start"><div class="flex-shrink-0 bg-blue-100 text-brand-blue rounded-full h-8 w-8 flex items-center justify-center mr-4"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4M4 7a8 8 0 014 0v10a8 8 0 004 0V7a8 8 0 014 0"></path></svg></div><span><strong>Base de Datos Vectorial:</strong> <strong>SAP HANA Cloud (Vector Engine)</strong> almacena los vectores para búsquedas semánticas.</span></li>
+                        <li class="flex items-start"><div class="flex-shrink-0 bg-blue-100 text-brand-blue rounded-full h-8 w-8 flex items-center justify-center mr-4"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg></div><span><strong>Modelo de Lenguaje (LLM):</strong> OpenAI (a través de SAP GenAI Hub) redacta la respuesta final.</span></li>
+                    </ul>
+                </div>
+                <!-- Beneficios Directos -->
+                <div>
+                    <h2 class="text-3xl font-bold brand-blue mb-6">Beneficios Directos</h2>
+                     <ul class="space-y-4">
+                        <li class="flex items-start"><div class="flex-shrink-0 bg-teal-100 text-brand-teal rounded-full h-8 w-8 flex items-center justify-center mr-4"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div><span><strong>Precisión y Fiabilidad:</strong> Las respuestas se basan 100% en documentos internos, no en conocimiento general de internet.</span></li>
+                        <li class="flex items-start"><div class="flex-shrink-0 bg-teal-100 text-brand-teal rounded-full h-8 w-8 flex items-center justify-center mr-4"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"></path></svg></div><span><strong>Cero Alucinaciones:</strong> Se elimina casi por completo el riesgo de que la IA invente información incorrecta.</span></li>
+                        <li class="flex items-start"><div class="flex-shrink-0 bg-teal-100 text-brand-teal rounded-full h-8 w-8 flex items-center justify-center mr-4"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h5M7 7l9 9M20 20v-5h-5"></path></svg></div><span><strong>Conocimiento Actualizado:</strong> La IA aprende de los últimos documentos que se añaden a SharePoint, manteniendo su conocimiento siempre vigente.</span></li>
+                        <li class="flex items-start"><div class="flex-shrink-0 bg-teal-100 text-brand-teal rounded-full h-8 w-8 flex items-center justify-center mr-4"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg></div><span><strong>Transparencia:</strong> El sistema puede citar los documentos exactos que usó para generar una respuesta, aumentando la confianza.</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Botón para Volver -->
+        <div class="text-center mt-20">
+            <a href="infografia_epic1.html" class="inline-block bg-gray-700 text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:bg-gray-800 transition-transform transform hover:scale-105">
+                &larr; Volver a Planificación
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>
+
